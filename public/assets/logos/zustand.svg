@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <!-- Zustand Bear Logo -->
+        <circle cx="128" cy="128" r="120" fill="#443737"/>
+        <path d="M128 48 C80 48 48 90 48 128 C48 166 80 208 128 208 C176 208 208 166 208 128 C208 90 176 48 128 48 Z" fill="#61426B"/>
+        <!-- Bear Ears -->
+        <circle cx="88" cy="88" r="24" fill="#8B5CF6"/>
+        <circle cx="168" cy="88" r="24" fill="#8B5CF6"/>
+        <!-- Bear Face -->
+        <circle cx="128" cy="138" r="40" fill="#8B5CF6"/>
+        <!-- Bear Nose -->
+        <circle cx="128" cy="148" r="12" fill="#443737"/>
+        <!-- Bear Eyes -->
+        <circle cx="108" cy="128" r="8" fill="#443737"/>
+        <circle cx="148" cy="128" r="8" fill="#443737"/>
+    </g>
+</svg>

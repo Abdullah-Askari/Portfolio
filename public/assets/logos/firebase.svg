@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <!-- Firebase Logo -->
+        <path d="M0 200.6L35.33 38.27L96.67 98.95L0 200.6Z" fill="#FFA000"/>
+        <path d="M0 200.6L84.98 38.95L146.7 39.61L0 200.6Z" fill="#F57F17"/>
+        <path d="M0 200.6L154.67 54.93L193.33 98.95L0 200.6Z" fill="#FFCA28"/>
+        <path d="M0 200.6L160 200.6L256 0L0 200.6Z" fill="#FFA000"/>
+    </g>
+</svg>
