@@ -41,7 +41,7 @@ const Contact = () => {
   }
   return (
     <motion.section 
-      className='c-space section-spacing'
+      className='c-space section-spacing mb-8'
       id="contact"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

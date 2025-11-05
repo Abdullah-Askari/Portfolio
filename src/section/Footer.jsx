@@ -1,5 +1,4 @@
 import { motion } from 'motion/react'
-import { mySocials } from '../constants'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -29,7 +28,7 @@ const Footer = () => {
 
   return (
     <motion.footer 
-      className="border-t border-white/10 mt-12"
+      className="border-t border-white/10 mt-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}

@@ -47,11 +47,14 @@
     }
   }
 }
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #030412;
   font-family: "Funnel Display", sans-serif;
   color: white;
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -64,7 +67,7 @@ body {
 }
 
 .section-spacing {
-  @apply min-h-screen mt-20 md:mt-30;
+  @apply min-h-screen mt-20 md:mt-30 mb-8;
 }
 
 .text-heading {
@@ -81,7 +84,7 @@ body {
 
 /* Navigation */
 .nav-ul {
-  @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
+  @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20 p-3;
 }
 
 .nav-li {
