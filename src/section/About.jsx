@@ -102,8 +102,7 @@ const About = () => {
           <div className="z-10 w-[50%]">
             <p className="headText">Tech Stack</p>
             <p className="subtext">
-              My core expertise includes React Native for mobile development, JavaScript/React for web, 
-              and modern tools like Git and Tailwind CSS for efficient development workflows
+              Specializing in React Native mobile apps, React web development, and modern frontend tools
             </p>
           </div>
           <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
