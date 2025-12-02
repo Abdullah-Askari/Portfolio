@@ -1,39 +1,49 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-function Navigation() {
+function Navigation({ onLinkClick }) {
     return (
         <ul
         className="nav-ul">
             <li
             className="nav-li">
                 <a href="#home"
+                onClick={onLinkClick}
                 className="nav-link">Home</a>
             </li>
             <li
             className="nav-li">
                 <a href="#about"
+                onClick={onLinkClick}
                 className="nav-link">About</a>
             </li>
             <li
             className="nav-li">
                 <a href="#projects"
+                onClick={onLinkClick}
                 className="nav-link">Projects</a>
             </li>
             <li
             className="nav-li">
                 <a href="#experiences"
+                onClick={onLinkClick}
                 className="nav-link">Experiences</a>
             </li>
             <li
             className="nav-li">
                 <a href="#contact"
+                onClick={onLinkClick}
                 className="nav-link">Contact</a>
             </li>
         </ul>
     )}
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    
+    const handleNavClick = () => {
+        setIsOpen(false);
+    };
+
   return (
     <div
     className='fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40'>
@@ -55,7 +65,7 @@ function Navbar() {
                 </button>
                 <nav
                 className="hidden sm:flex">
-                    <Navigation />
+                    <Navigation onLinkClick={handleNavClick} />
                 </nav>
             </div>
         </div>
@@ -72,7 +82,7 @@ function Navbar() {
               }}
             >
               <nav className="pb-5">
-                <Navigation />
+                <Navigation onLinkClick={handleNavClick} />
               </nav>
             </motion.div>
           )}
