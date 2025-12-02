@@ -71,8 +71,61 @@ export const myProjects = [
         path: "/assets/logos/tailwindcss.svg",
       },
     ],
+  },
+  {
+    id: 3,
+    title: "NexusChat - Real-time Chat Application",
+    description: "A real-time chat application built with React Native, Expo, and Firebase",
+    subDescription: [
+      "Developed a mobile chat app with React Native and Expo for cross-platform deployment",
+      "Implemented Firebase authentication with login, signup, and password recovery",
+      "Built one-on-one messaging with real-time synchronization between users",
+      "Designed user discovery and direct messaging features for registered users",
+    ],
+    href: "https://github.com/Abdullah-Askari/NexusChat",
+    logo: "",
+    image: "/assets/projects/NexusChat.jpeg",
+    tags: [
+      {
+        id: 1,
+        name: "React Native",
+        path: "/assets/logos/react-native.svg",
+      },
+      {
+        id: 2,
+        name: "Expo",
+        path: "/assets/logos/expo.svg",
+      },
+      {
+        id: 3,
+        name: "Firebase",
+        path: "/assets/logos/firebase.svg",
+      },
+      {
+        id: 4,
+        name: "JavaScript",
+        path: "/assets/logos/javascript.svg",
+      },
+    ],
   }
 ];
+
+export const myExperiences = [
+  {
+    id: 1,
+    date: "2025",
+    title: "Web Development Internship",
+    job: "React Developer",
+    contents: [
+      "Developed responsive web applications using React and modern JavaScript",
+      "Implemented component-based architecture and state management",
+      "Collaborated with team members on frontend features and UI improvements",
+      "Learned best practices in React development and web design patterns",
+    ],
+  },
+];
+
+export const experiences = myExperiences;
 
 export const mySocials = [
   {

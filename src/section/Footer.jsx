@@ -45,7 +45,7 @@ const Footer = () => {
 
   return (
     <motion.footer 
-      className="border-t border-white/10 mt-4 overflow-hidden"
+      className="border-t border-white/10 mt-16 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -65,7 +65,7 @@ const Footer = () => {
         
         {/* Content with animations */}
         <motion.div 
-          className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6 relative"
+          className="flex flex-col md:flex-row justify-center items-center gap-6 mb-6 relative"
           variants={containerVariants}
         >
           <motion.p
@@ -75,26 +75,6 @@ const Footer = () => {
           >
             © {currentYear} Abdullah Askari. All rights reserved.
           </motion.p>
-          
-          <motion.div 
-            className="flex gap-8"
-            variants={containerVariants}
-          >
-            <motion.span
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              className="text-neutral-400 hover:text-white transition-colors duration-300"
-            >
-              Privacy Policy
-            </motion.span>
-            <motion.span
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              className="text-neutral-400 hover:text-white transition-colors duration-300"
-            >
-              Terms of Service
-            </motion.span>
-          </motion.div>
         </motion.div>
       </motion.div>
     </motion.footer>

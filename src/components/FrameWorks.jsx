@@ -5,6 +5,8 @@ export function Frameworks() {
     "react-native",
     "git",
     "github",
+    "expo",
+    "firebase",
     "html5",
     "javascript",
     "microsoft",
@@ -16,14 +18,12 @@ export function Frameworks() {
     <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
       <OrbitingCircles iconSize={40}>
         {skills.map((skill, index) => {
-          const fileExtension = skill === 'react-native' ? 'jpeg' : 'svg';
-          return <Icon key={index} src={`assets/logos/${skill}.${fileExtension}`} />;
+          return <Icon key={index} src={`assets/logos/${skill}.svg`} />;
         })}
       </OrbitingCircles>
       <OrbitingCircles iconSize={25} radius={100} reverse speed={2}>
         {skills.reverse().map((skill, index) => {
-          const fileExtension = skill === 'react-native' ? 'jpeg' : 'svg';
-          return <Icon key={index} src={`assets/logos/${skill}.${fileExtension}`} />;
+          return <Icon key={index} src={`assets/logos/${skill}.svg`} />;
         })}
       </OrbitingCircles>
     </div>

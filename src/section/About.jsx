@@ -25,6 +25,16 @@ const About = () => {
           </div>
           <div className="absolute inset-x-0 pointer-evets-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
         </div>
+        {/* Grid 1.5 - Me Image */}
+        <div className="grid-default-color md:col-span-3 md:row-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200 rounded-2xl">
+          <div className="flex items-center justify-center w-full h-full overflow-hidden">
+            <img
+              src="/ me.jpeg"
+              alt="Abdullah Askari"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
         {/* Grid 2 */}
         <div className="grid-default-color grid-2">
           <div

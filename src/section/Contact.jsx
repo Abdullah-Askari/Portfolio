@@ -96,13 +96,39 @@ const Contact = () => {
                 <h3 className="text-xl font-semibold text-white">Email</h3>
                 <motion.div 
                   whileHover={{ rotate: 15 }}
-                  className="p-1.5 bg-sand/10 rounded-lg"
+                  className="p-2 bg-sand/10 rounded-lg"
                 >
                   <img src="/assets/socials/email.svg" alt="Email" className="w-6 h-6" />
                 </motion.div>
               </div>
               <p className="text-neutral-400 mb-4">Drop me a line anytime!</p>
               <MailButton />
+            </motion.div>
+
+            {/* Phone Card */}
+            <motion.div 
+              variants={cardVariants}
+              className="bg-white/5 p-5 rounded-xl backdrop-blur-sm hover:bg-white/10 transition-colors"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-xl font-semibold text-white">Phone</h3>
+                <motion.div 
+                  whileHover={{ rotate: 15 }}
+                  className="p-2 bg-sand/10 rounded-lg"
+                >
+                  <img src="/assets/socials/whatsApp.svg" alt="WhatsApp" className="w-6 h-6" />
+                </motion.div>
+              </div>
+              <p className="text-neutral-400 mb-2">+92 3090808693</p>
+              <motion.a
+                href="https://wa.me/923090808693"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-3 px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors"
+                whileHover={{ scale: 1.05 }}
+              >
+                WhatsApp
+              </motion.a>
             </motion.div>
 
             {/* Location Card */}
