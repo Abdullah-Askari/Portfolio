@@ -41,7 +41,9 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     
     const handleNavClick = () => {
-        setIsOpen(false);
+        setTimeout(() => {
+            setIsOpen(false);
+        }, 300);
     };
 
   return (
