@@ -32,6 +32,7 @@ export const Timeline = ({
 
   return (
     <div
+      id="experiences"
       className="c-space section-spacing"
       ref={containerRef}>
       <h2 className="text-heading">My Work Experience</h2>

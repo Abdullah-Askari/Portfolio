@@ -20,7 +20,6 @@ function Navigation() {
                 <a href="#projects"
                 className="nav-link">Projects</a>
             </li>
-            <li></li>
             <li
             className="nav-li">
                 <a href="#experiences"
