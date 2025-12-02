@@ -29,7 +29,7 @@ const About = () => {
         <div className="grid-default-color md:col-span-3 md:row-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200 rounded-2xl">
           <div className="flex items-center justify-center w-full h-full overflow-hidden">
             <img
-              src="/ me.jpeg"
+              src="/me.jpeg"
               alt="Abdullah Askari"
               className="w-full h-full object-cover"
             />
