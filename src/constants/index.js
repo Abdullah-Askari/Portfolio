@@ -1,16 +1,10 @@
-import { path } from "motion/react-client";
+
 
 export const myProjects = [
   {
     id: 1,
     title: "Task Manager Mobile App",
     description: "A modern task management mobile application built with React Native and Firebase",
-    subDescription: [
-      "Developed a cross-platform mobile app using React Native and NativeWind (TailwindCSS for React Native)",
-      "Implemented real-time data synchronization and user authentication using Firebase",
-      "Created intuitive task management features including categories, priorities, and due dates",
-      "Designed a clean, modern UI with smooth animations and gestures for better user experience",
-    ],
     href: "",
     logo: "",
     image: "/assets/projects/TaskApp.jpeg",
@@ -47,12 +41,6 @@ export const myProjects = [
     title: "Jira Clone - Project Management",
     description:
       "A modern Jira-inspired project management web application built with React and Firebase",
-    subDescription: [
-      "Developed a responsive project management system with React and Tailwind CSS",
-      "Implemented secure user authentication and authorization using Firebase Authentication",
-      "Built efficient state management using Zustand for optimal performance",
-      "Created drag-and-drop kanban boards, issue tracking, and project organization features",
-    ],
     href: "",
     logo: "",
     image: "/assets/projects/jira-clone.jpeg",
@@ -83,12 +71,6 @@ export const myProjects = [
     id: 3,
     title: "NexusChat - Real-time Chat Application",
     description: "A real-time chat application built with React Native, Expo, and Firebase",
-    subDescription: [
-      "Developed a mobile chat app with React Native and Expo for cross-platform deployment",
-      "Implemented Firebase authentication with login, signup, and password recovery",
-      "Built one-on-one messaging with real-time synchronization between users",
-      "Designed user discovery and direct messaging features for registered users",
-    ],
     href: "https://github.com/Abdullah-Askari/NexusChat",
     logo: "",
     image: "/assets/projects/NexusChat.jpeg",

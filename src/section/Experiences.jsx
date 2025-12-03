@@ -3,9 +3,10 @@ import { experiences } from "../constants"
 
 const Experiences = () => {
     return (
-        <div className="w-full ">
+        <section id="experiences" className="c-space section-spacing">
+            <h2 className="text-heading">My Experience</h2>
             <Timeline data={experiences}/>
-        </div>
+        </section>
     ) 
 }
 

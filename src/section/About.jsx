@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Card from "../components/Card";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/FrameWorks";
-import { Globe } from "../components/Globe"; 
+import { Globe } from "../components/globe"; 
 
 const About = () => {
   const grid2Container = useRef();
@@ -31,7 +31,7 @@ const About = () => {
             <img
               src="/me.jpeg"
               alt="Abdullah Askari"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl"
             />
           </div>
         </div>

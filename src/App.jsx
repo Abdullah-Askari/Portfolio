@@ -16,10 +16,10 @@ function App() {
       <Hero />
       {/*About*/}
       <About />
-      {/*Experiences*/}
-      <Experiences />
       {/*projects*/}
       <Projects />
+      {/*Experiences*/}
+      <Experiences />
       {/*Contact*/}
       <Contact />
       {/*Footer*/}

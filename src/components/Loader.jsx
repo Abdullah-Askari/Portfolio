@@ -1,11 +1,12 @@
-import { Html, useProgress } from "@react-three/drei"
-function Loader() {
-    const { progress } = useProgress();
-  return (
-    <Html
-    center
-    className="font-black text-xl text-center text-normal">{progress} % loaded</Html>
-  )
-}
+import { Html, useProgress } from "@react-three/drei";
 
-export default Loader
+const Loader = () => {
+  const { progress } = useProgress();
+  return (
+    <Html center className="text-xl font-normal text-center">
+      {progress}% Loaded
+    </Html>
+  );
+};
+
+export default Loader;
