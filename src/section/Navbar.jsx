@@ -50,7 +50,7 @@ function Navbar() {
     <div
     className='fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-primary/40'>
         <div
-        className='mx-auto c-space max-w-7xl'>
+        className='mx-auto c-space max-w-7xl relative'>
             <div
             className='flex items-center justify-between py-2 sm:py-0'>
                 <a
@@ -60,7 +60,7 @@ function Navbar() {
                 </a>
                 <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none sm:hidden relative z-50"
+                className="flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none sm:hidden z-50"
                 >
                     <img src={isOpen ?"/assets/close.svg":"/assets/menu.svg"} className='w-6 h-6' 
                     alt='toggle'/>
