@@ -14,9 +14,7 @@ const About = () => {
         <div className="flex items-end grid-default-color grid-1">
           <img
             src="assets/coding-pov.png"
-            loading="lazy"
             className="absolute scale-[1.75] -right-[5rem] -top-[1rem] md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
-            alt="Coding POV"
           />
           <div className="z-10">
             <p className="headtext">Hi, I'm Abdullah Askari</p>
@@ -27,14 +25,13 @@ const About = () => {
           </div>
           <div className="absolute inset-x-0 pointer-evets-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-indigo" />
         </div>
-        {/* Grid 1.5 - Me Image */}
+        {/* Me Image Grid */}
         <div className="grid-default-color md:col-span-3 md:row-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200 rounded-2xl">
-          <div className="flex items-center justify-center w-full h-full overflow-hidden">
+          <div className="flex items-center justify-center w-full h-full">
             <img
               src="/me.jpeg"
               alt="Abdullah Askari"
-              loading="lazy"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl"
             />
           </div>
         </div>

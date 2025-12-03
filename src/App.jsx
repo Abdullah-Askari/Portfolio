@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import Navbar from './section/Navbar'
 import Hero from './section/Hero'
 import About from './section/About'
@@ -18,13 +18,9 @@ function App() {
       {/*About*/}
       <About />
       {/*Experiences*/}
-      <Suspense fallback={null}>
-        <Experiences />
-      </Suspense>
+      <Experiences />
       {/*projects*/}
-      <Suspense fallback={null}>
-        <Projects />
-      </Suspense>
+      <Projects />
       {/*Contact*/}
       <Contact />
       {/*Footer*/}

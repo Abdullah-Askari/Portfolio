@@ -23,7 +23,6 @@ const ProjectDetails = ({
         <img 
           src={image} 
           alt={title} 
-          loading="lazy"
           className="w-full rounded-t-2xl object-contain max-h-[60vh]" 
         />
         <div className="p-5">
