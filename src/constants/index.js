@@ -1,3 +1,5 @@
+import { path } from "motion/react-client";
+
 export const myProjects = [
   {
     id: 1,
@@ -16,7 +18,7 @@ export const myProjects = [
       {
         id: 1,
         name: "React Native",
-        path: "/assets/logos/react-native.jpeg",
+        path: "/assets/logos/react-native.svg",
       },
       {
         id: 2,
@@ -33,6 +35,11 @@ export const myProjects = [
         name: "TailwindCSS",
         path: "/assets/logos/tailwindcss.svg",
       },
+      {
+        id: 5,
+        name:"Expo",
+        path:"/assets/logos/expo.svg",
+      }
     ],
   },
   {
