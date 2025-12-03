@@ -9,8 +9,7 @@ import Footer from './section/Footer'
 
 function App() {
   return (
-    <div
-    className='container mx-auto max-w-7xl'>
+    <div className='w-full container mx-auto max-w-7xl px-4'>
       {/*Nav*/}
       <Navbar />
       {/*Hero*/}

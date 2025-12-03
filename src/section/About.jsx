@@ -31,7 +31,7 @@ const About = () => {
             <img
               src="/me.jpeg"
               alt="Abdullah Askari"
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
