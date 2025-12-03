@@ -1,6 +1,8 @@
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { useMediaQuery } from "react-responsive";
 
 const ParallaxBackground = () => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const { scrollYProgress } = useScroll();
   const x = useSpring(scrollYProgress, { damping: 50 });
   const mountain3Y = useTransform(x, [0, 0.5], ["0%", "70%"]);
@@ -22,45 +24,89 @@ const ParallaxBackground = () => {
           }}
         />
         {/* Mountain Layer 3 */}
-        <motion.div
-          className="absolute inset-0 -z-40 will-change-transform"
-          style={{
-            backgroundImage: "url(/assets/mountain-3.png)",
-            backgroundPosition: "bottom",
-            backgroundSize: "cover",
-            y: mountain3Y,
-          }}
-        />
+        {!isMobile ? (
+          <motion.div
+            className="absolute inset-0 -z-40 will-change-transform"
+            style={{
+              backgroundImage: "url(/assets/mountain-3.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+              y: mountain3Y,
+            }}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 -z-40"
+            style={{
+              backgroundImage: "url(/assets/mountain-3.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+            }}
+          />
+        )}
         {/* Planets */}
-        <motion.div
-          className="absolute inset-0 -z-30 will-change-transform"
-          style={{
-            backgroundImage: "url(/assets/planets.png)",
-            backgroundPosition: "bottom",
-            backgroundSize: "cover",
-            x: planetsX,
-          }}
-        />
+        {!isMobile ? (
+          <motion.div
+            className="absolute inset-0 -z-30 will-change-transform"
+            style={{
+              backgroundImage: "url(/assets/planets.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+              x: planetsX,
+            }}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 -z-30"
+            style={{
+              backgroundImage: "url(/assets/planets.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+            }}
+          />
+        )}
         {/* Mountain Layer 2 */}
-        <motion.div
-          className="absolute inset-0 -z-20 will-change-transform"
-          style={{
-            backgroundImage: "url(/assets/mountain-2.png)",
-            backgroundPosition: "bottom",
-            backgroundSize: "cover",
-            y: mountain2Y,
-          }}
-        />
+        {!isMobile ? (
+          <motion.div
+            className="absolute inset-0 -z-20 will-change-transform"
+            style={{
+              backgroundImage: "url(/assets/mountain-2.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+              y: mountain2Y,
+            }}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 -z-20"
+            style={{
+              backgroundImage: "url(/assets/mountain-2.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+            }}
+          />
+        )}
         {/* Mountaine Layer 1 */}
-        <motion.div
-          className="absolute inset-0 -z-10 will-change-transform"
-          style={{
-            backgroundImage: "url(/assets/mountain-1.png)",
-            backgroundPosition: "bottom",
-            backgroundSize: "cover",
-            y: mountain1Y,
-          }}
-        />
+        {!isMobile ? (
+          <motion.div
+            className="absolute inset-0 -z-10 will-change-transform"
+            style={{
+              backgroundImage: "url(/assets/mountain-1.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+              y: mountain1Y,
+            }}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 -z-10"
+            style={{
+              backgroundImage: "url(/assets/mountain-1.png)",
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+            }}
+          />
+        )}
       </div>
     </section>
   );

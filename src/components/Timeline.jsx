@@ -1,6 +1,7 @@
 "use client";;
 import { useScroll, useTransform, motion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export const Timeline = ({
   data
@@ -8,6 +9,7 @@ export const Timeline = ({
   const ref = useRef(null);
   const containerRef = useRef(null);
   const [height, setHeight] = useState(0);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useEffect(() => {
     const compute = () => {
@@ -94,14 +96,19 @@ export const Timeline = ({
             via-neutral-700 to-transparent to-[99%] 
             [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,
             transparent_100%)] ">
-          <motion.div
-            style={{  
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t
-             from-purple-500 via-lavender/50 to-transparent from-[0%] via-[10%] 
-             rounded-full" />
+          {!isMobile && (
+            <motion.div
+              style={{  
+                height: heightTransform,
+                opacity: opacityTransform,
+              }}
+              className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t
+               from-purple-500 via-lavender/50 to-transparent from-[0%] via-[10%] 
+               rounded-full" />
+          )}
+          {isMobile && (
+            <div className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-lavender/50 to-transparent from-[0%] via-[10%] rounded-full" />
+          )}
         </div>
       </div>
     </div>
