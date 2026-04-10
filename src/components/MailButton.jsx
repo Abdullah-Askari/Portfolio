@@ -11,7 +11,7 @@ function MailButton() {
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
-      <motion.span>Get in Touch</motion.span>
+      <motion.span name="mail-button-text">Get in Touch</motion.span>
       <motion.svg 
         xmlns="http://www.w3.org/2000/svg" 
         viewBox="0 0 24 24" 
