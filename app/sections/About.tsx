@@ -37,7 +37,7 @@ export default function About() {
         <h2 className="text-heading gradient-text-cyan">About Me</h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-6 md:auto-rows-72">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-6 md:auto-rows-[19.5rem]">
         {/* Grid 1: Bio & Philosophy */}
         <div className="flex flex-col justify-end p-7 glass-panel glass-panel-hover rounded-2xl grid-1 relative overflow-hidden">
           <Image
@@ -76,38 +76,38 @@ export default function About() {
         <div className="glass-panel glass-panel-hover grid-2 rounded-2xl relative overflow-hidden">
           <div
             ref={grid2Container}
-            className="flex items-center justify-center w-full h-full p-6 relative select-none"
+            className="flex items-center justify-center w-full h-full p-4 sm:p-6 relative select-none"
           >
-            <p className="flex items-center text-4xl md:text-5xl font-black text-white/10 tracking-widest pointer-events-none">
+            <p className="flex items-center text-3xl sm:text-4xl md:text-5xl font-black text-white/10 tracking-widest pointer-events-none select-none text-center">
               CODE IS CRAFT
             </p>
             <Card
-              style={{ rotate: "75deg", top: "25%", left: "18%" }}
+              style={{ rotate: "15deg", top: "18%", left: "8%" }}
               text="GRASP"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-28deg", top: "58%", left: "42%" }}
+              style={{ rotate: "-12deg", top: "54%", left: "36%" }}
               text="SOLID"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "15deg", bottom: "25%", left: "68%" }}
+              style={{ rotate: "10deg", bottom: "16%", left: "60%" }}
               text="Patterns"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-40deg", top: "18%", left: "65%" }}
+              style={{ rotate: "-18deg", top: "14%", left: "56%" }}
               text="Clean Code"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "25deg", top: "65%", left: "10%" }}
+              style={{ rotate: "16deg", top: "60%", left: "8%" }}
               image="/assets/logos/react.svg"
               containerRef={grid2Container}
             />
             <Card
-              style={{ rotate: "-20deg", top: "12%", left: "42%" }}
+              style={{ rotate: "-10deg", top: "12%", left: "32%" }}
               image="/assets/logos/github.svg"
               containerRef={grid2Container}
             />
@@ -116,7 +116,7 @@ export default function About() {
 
         {/* Grid 3: Time Zone & 3D Globe */}
         <div className="glass-panel glass-panel-hover grid-3 rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
-          <div className="z-10 max-w-[50%]">
+          <div className="z-10 max-w-[60%] sm:max-w-[50%]">
             <p className="headtext font-bold text-white">Time Zone</p>
             <p className="subtext text-xs leading-relaxed">
               I&apos;m based in Lahore, Pakistan, but I can work remotely worldwide.
@@ -129,7 +129,7 @@ export default function About() {
               </div>
             )}
           </div>
-          <figure className="absolute -right-16 -bottom-16 md:-right-8 md:-bottom-8 pointer-events-none opacity-75">
+          <figure className="absolute -right-12 -bottom-12 sm:-right-8 sm:-bottom-8 pointer-events-none opacity-80">
             <Globe />
           </figure>
         </div>
@@ -146,14 +146,14 @@ export default function About() {
         </div>
 
         {/* Grid 5: Tech Stack Orbit */}
-        <div className="glass-panel glass-panel-hover grid-5 rounded-2xl p-6 relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
-          <div className="z-10 md:max-w-[45%]">
+        <div className="glass-panel glass-panel-hover grid-5 rounded-2xl p-6 md:p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
+          <div className="z-10 md:max-w-[42%] w-full">
             <p className="headtext font-bold text-white">Tech Stack</p>
             <p className="subtext leading-relaxed">
-              Specialized in React Native mobile apps, Expo, React, TypeScript, Firebase, and modern development tools.
+              Specialized in React Native mobile apps, Expo, React, Next.js, TypeScript, Firebase, and modern development tools.
             </p>
           </div>
-          <div className="w-full md:w-1/2 h-56 flex items-center justify-center relative">
+          <div className="w-full md:w-[58%] h-72 sm:h-80 md:h-full flex items-center justify-center relative mt-4 md:mt-0">
             <Frameworks />
           </div>
         </div>

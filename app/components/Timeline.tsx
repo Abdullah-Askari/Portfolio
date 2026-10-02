@@ -10,10 +10,14 @@ export const Timeline = ({ data }: TimelineProps) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
+    const updateHeight = () => {
+      if (ref.current) {
+        setHeight(ref.current.offsetHeight);
+      }
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, [data]);
 
   const { scrollYProgress } = useScroll({
@@ -21,7 +25,6 @@ export const Timeline = ({ data }: TimelineProps) => {
     offset: ["start 20%", "end 60%"],
   });
 
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
@@ -32,8 +35,8 @@ export const Timeline = ({ data }: TimelineProps) => {
             key={item.id || index}
             className="flex justify-start pt-8 md:pt-16 md:gap-10 relative"
           >
-            {/* Timeline Node & Meta */}
-            <div className="sticky z-30 flex flex-col items-center self-start max-w-xs md:flex-row top-32 lg:max-w-sm md:w-full">
+            {/* Timeline Node & Meta - Sticky on desktop only to avoid mobile layout thrashing */}
+            <div className="flex flex-col items-center self-start max-w-xs md:sticky md:top-32 md:flex-row lg:max-w-sm md:w-full z-30">
               {/* Radar Node */}
               <div className="absolute -left-3.5 flex items-center justify-center size-9 rounded-full bg-midnight border border-aqua/40 shadow-[0_0_15px_rgba(51,194,204,0.3)]">
                 <span className="size-2 rounded-full bg-aqua" />
@@ -74,17 +77,18 @@ export const Timeline = ({ data }: TimelineProps) => {
           </div>
         ))}
 
-        {/* Scroll Progress Beam */}
+        {/* Scroll Progress Beam (GPU hardware-accelerated scaleY: 0 layout reflows) */}
         <div
-          style={{ height: `${height}px` }}
-          className="absolute left-1 top-0 overflow-hidden w-0.5 bg-gradient-to-b from-white/10 via-white/5 to-transparent"
+          style={{ height: height > 0 ? `${height}px` : "100%" }}
+          className="absolute left-1 top-0 overflow-hidden w-0.5 bg-gradient-to-b from-white/10 via-white/5 to-transparent pointer-events-none"
         >
           <motion.div
             style={{
-              height: heightTransform,
+              scaleY: scrollYProgress,
+              transformOrigin: "top",
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-0.5 bg-gradient-to-b from-aqua via-fuchsia to-transparent rounded-full shadow-[0_0_10px_#33c2cc]"
+            className="absolute inset-x-0 top-0 h-full w-0.5 bg-gradient-to-b from-aqua via-fuchsia to-transparent rounded-full shadow-[0_0_10px_#33c2cc] will-change-transform"
           />
         </div>
       </div>

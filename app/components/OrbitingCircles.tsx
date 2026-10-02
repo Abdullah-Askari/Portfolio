@@ -20,7 +20,7 @@ export function OrbitingCircles({
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
-          className="absolute inset-0 pointer-events-none size-full"
+          className="absolute inset-0 pointer-events-none size-full overflow-visible"
         >
           <circle
             className="stroke-1 stroke-white/10"

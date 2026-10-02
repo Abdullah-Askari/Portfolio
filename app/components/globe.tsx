@@ -3,7 +3,7 @@
 import createGlobe from "cobe";
 import type { COBEOptions } from "cobe";
 import { useMotionValue, useSpring } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef , useState } from "react";
 
 import { twMerge } from "tailwind-merge";
 import  { GlobeProps } from "@/constants/types";
@@ -39,11 +39,13 @@ const GLOBE_CONFIG: COBEOptions = {
 };
 
 export function Globe({ className, config = GLOBE_CONFIG }: GlobeProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const phi = useRef(0);
   const width = useRef(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
+  const [isInView, setIsInView] = useState(false);
 
   const r = useMotionValue(0);
   const rs = useSpring(r, {
@@ -67,7 +69,32 @@ export function Globe({ className, config = GLOBE_CONFIG }: GlobeProps) {
     }
   };
 
+  // Only run WebGL when Globe is in viewport
   useEffect(() => {
+    const target = containerRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: "150px" } // Preload shortly before entering viewport
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const isMobile = window.innerWidth < 768;
+    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
+    const samples = isMobile ? 4500 : 10000;
+
     const onResize = () => {
       if (canvasRef.current) {
         width.current = canvasRef.current.offsetWidth;
@@ -76,32 +103,43 @@ export function Globe({ className, config = GLOBE_CONFIG }: GlobeProps) {
 
     window.addEventListener("resize", onResize);
     onResize();
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+
+    const canvasWidth = (width.current || 400) * (isMobile ? 1.2 : 1.6);
 
     const globeConfig: COBEOptions = {
       ...GLOBE_CONFIG,
       ...config,
-      width: width.current * 2,
-      height: width.current * 2,
+      devicePixelRatio: dpr,
+      mapSamples: config.mapSamples ?? samples,
+      width: canvasWidth,
+      height: canvasWidth,
       onRender: (state) => {
         if (pointerInteracting.current === null) phi.current += 0.005;
         state.phi = phi.current + rs.get();
-        state.width = width.current * 2;
-        state.height = width.current * 2;
+        state.width = canvasWidth;
+        state.height = canvasWidth;
       },
     };
+
+    const handleContextLost = (e: Event) => {
+      e.preventDefault();
+    };
+    canvas.addEventListener("webglcontextlost", handleContextLost);
+
     const globe = createGlobe(canvas, globeConfig);
 
-    setTimeout(() => (canvas.style.opacity = "1"), 0);
+    canvas.style.opacity = "1";
     return () => {
       globe.destroy();
+      canvas.removeEventListener("webglcontextlost", handleContextLost);
       window.removeEventListener("resize", onResize);
+      if (canvas) canvas.style.opacity = "0";
     };
-  }, [rs, config]);
+  }, [isInView, rs, config]);
 
   return (
     <div
+      ref={containerRef}
       className={twMerge(
         "mx-auto aspect-square w-full max-w-150",
         className

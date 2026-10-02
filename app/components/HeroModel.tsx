@@ -61,15 +61,15 @@ export default function HeroModel({
 
       {/* Central Iridescent Liquid Quantum Core */}
       <mesh ref={coreRef}>
-        <sphereGeometry args={[0.72, 64, 64]} />
+        <sphereGeometry args={[0.72, 48, 48]} />
         <MeshDistortMaterial
           color="#2e1065"
           emissive="#06b6d4"
           emissiveIntensity={0.7}
           roughness={0.12}
           metalness={0.88}
-          distort={0.36}
-          speed={isAnimated ? 2.4 : 0}
+          distort={0.32}
+          speed={isAnimated ? 2.0 : 0}
         />
       </mesh>
 
@@ -188,10 +188,10 @@ export default function HeroModel({
 
       {/* Cosmic Stardust Sparkles */}
       <Sparkles
-        count={isAnimated ? 35 : 12}
+        count={isAnimated ? 26 : 10}
         scale={3.6}
-        size={2.5}
-        speed={isAnimated ? 0.35 : 0}
+        size={2.2}
+        speed={isAnimated ? 0.3 : 0}
         color="#22d3ee"
         opacity={0.65}
       />
@@ -201,10 +201,10 @@ export default function HeroModel({
   if (isAnimated) {
     return (
       <Float
-        speed={1.6}
-        rotationIntensity={0.15}
-        floatIntensity={0.3}
-        floatingRange={[-0.07, 0.07]}
+        speed={1.4}
+        rotationIntensity={0.12}
+        floatIntensity={0.25}
+        floatingRange={[-0.05, 0.05]}
       >
         {content}
       </Float>

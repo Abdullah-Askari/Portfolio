@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useSyncExternalStore } from "react";
+import { Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 import HeroText from "../components/HeroText";
@@ -12,11 +12,31 @@ const emptySubscribe = () => () => {};
 const useMounted = () => useSyncExternalStore(emptySubscribe, () => true, () => false);
 
 const Hero = () => {
+  const heroRef = useRef<HTMLElement>(null);
   const mounted = useMounted();
   const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const [isInView, setIsInView] = useState(true);
+  const [canvasKey, setCanvasKey] = useState(0);
+
+  // Pause rendering when Hero is completely off-screen to free mobile GPU memory
+  useEffect(() => {
+    const target = heroRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
+      ref={heroRef}
       id="home"
       className="relative w-full min-h-screen overflow-hidden flex items-center justify-center"
     >
@@ -53,15 +73,37 @@ const Hero = () => {
           {/* 3D Model Canvas: Centered directly in front of the Sun */}
           {mounted && (
             <Canvas
+              key={canvasKey}
               camera={{ position: [0, 0, 4.6], fov: 44 }}
               dpr={isDesktop ? [1, 1.5] : 1}
-              frameloop={isDesktop ? "always" : "demand"}
-              gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+              frameloop={isInView ? "always" : "never"}
+              gl={{
+                antialias: true,
+                alpha: true,
+                powerPreference: isDesktop ? "high-performance" : "default",
+                preserveDrawingBuffer: true,
+              }}
+              onCreated={({ gl, invalidate }) => {
+                const canvasEl = gl.domElement;
+                const handleContextLost = (event: Event) => {
+                  event.preventDefault();
+                  console.warn("Hero WebGL context lost - restoring...");
+                  setTimeout(() => {
+                    setCanvasKey((k) => k + 1);
+                  }, 200);
+                };
+                const handleContextRestored = () => {
+                  console.log("Hero WebGL context restored");
+                  invalidate();
+                };
+                canvasEl.addEventListener("webglcontextlost", handleContextLost);
+                canvasEl.addEventListener("webglcontextrestored", handleContextRestored);
+              }}
               className="w-full h-full relative z-10 pointer-events-none"
             >
               <Suspense fallback={<Loader />}>
                 <HeroModel
-                  isAnimated={isDesktop}
+                  isAnimated={true}
                   scale={isDesktop ? 0.95 : 0.75}
                   position={[0, 0, 0]}
                 />
