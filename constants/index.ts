@@ -1,12 +1,20 @@
+import type { ProjectItem, ExperienceItem, SocialItem, NavItem } from "./types";
 
+export const navLinks: NavItem[] = [
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experiences", href: "#experiences" },
+  { name: "Contact", href: "#contact" },
+];
 
-export const myProjects = [
+export const myProjects: ProjectItem[] = [
   {
     id: 1,
     title: "Task Manager Mobile App",
     description: "A modern task management mobile application built with React Native and Firebase",
-    href: "",
-    logo: "",
+    href: "https://github.com/Abdullah-Askari/TaskApp",
+    logo: "/assets/logos/react-native.svg",
     image: "/assets/projects/TaskApp.jpeg",
     tags: [
       {
@@ -31,18 +39,17 @@ export const myProjects = [
       },
       {
         id: 5,
-        name:"Expo",
-        path:"/assets/logos/expo.svg",
-      }
+        name: "Expo",
+        path: "/assets/logos/expo.svg",
+      },
     ],
   },
   {
     id: 2,
     title: "Jira Clone - Project Management",
-    description:
-      "A modern Jira-inspired project management web application built with React and Firebase",
-    href: "",
-    logo: "",
+    description: "A modern Jira-inspired project management web application built with React and Firebase",
+    href: "https://github.com/Abdullah-Askari",
+    logo: "/assets/logos/react.svg",
     image: "/assets/projects/jira-clone.jpeg",
     tags: [
       {
@@ -72,7 +79,7 @@ export const myProjects = [
     title: "NexusChat - Real-time Chat Application",
     description: "A real-time chat application built with React Native, Expo, and Firebase",
     href: "https://github.com/Abdullah-Askari/NexusChat",
-    logo: "",
+    logo: "/assets/logos/react-native.svg",
     image: "/assets/projects/NexusChat.jpeg",
     tags: [
       {
@@ -96,30 +103,59 @@ export const myProjects = [
         path: "/assets/logos/javascript.svg",
       },
     ],
-  }
+  },
+  {
+    id: 4,
+    title: "UPortal - University Portal Clone",
+    description: "A University of Central Punjab portal clone mobile app built with React Native and Firebase",
+    href: "https://github.com/Abdullah-Askari/UPortal",
+    logo: "/assets/logos/react-native.svg",
+    image: "/assets/projects/UPortal.jpg",
+    tags: [
+      {
+        id: 1,
+        name: "React Native",
+        path: "/assets/logos/react-native.svg",
+      },
+      {
+        id: 2,
+        name: "Firebase",
+        path: "/assets/logos/firebase.svg",
+      },
+      {
+        id: 3,
+        name: "Expo",
+        path: "/assets/logos/expo.svg",
+      },
+      {
+        id: 4,
+        name: "JavaScript",
+        path: "/assets/logos/javascript.svg",
+      },
+    ],
+  },
 ];
 
-export const myExperiences = [
+export const myExperiences: ExperienceItem[] = [
   {
     id: 1,
-    date: "2025",
-    title: "Web Development Internship",
-    job: "React Developer",
+    date: "July 2025 - Sep 2025",
+    title: "Z2A Tech",
+    job: "Web Developer Intern",
     contents: [
-      "Developed responsive web applications using React and modern JavaScript",
-      "Implemented component-based architecture and state management",
-      "Collaborated with team members on frontend features and UI improvements",
-      "Learned best practices in React development and web design patterns",
+      "Built web applications using modern technologies.",
+      "Implemented dynamic features using JavaScript.",
+      "Understood and implemented state management.",
     ],
   },
 ];
 
 export const experiences = myExperiences;
 
-export const mySocials = [
+export const mySocials: SocialItem[] = [
   {
     name: "Github",
-    href:"https://github.com/Abdullah-Askari",
+    href: "https://github.com/Abdullah-Askari",
     icon: "/assets/logos/github.svg",
   },
   {

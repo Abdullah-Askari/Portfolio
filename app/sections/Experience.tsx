@@ -1,15 +1,17 @@
 "use client";
 
 import { Timeline } from "../components/Timeline";
-import { experiences } from "../../constants"
+import { experiences } from "@/constants";
 
-const Experiences = () => {
-    return (
-        <section id="experiences" className="c-space section-spacing">
-            <h2 className="text-heading">My Experience</h2>
-            <Timeline data={experiences}/>
-        </section>
-    ) 
+export default function Experiences() {
+  return (
+    <section id="experiences" className="c-space section-spacing mb-16">
+      {/* Section Header */}
+      <div className="flex flex-col gap-2 mb-8">
+        <h2 className="text-heading gradient-text-cyan">My Work Experience</h2>
+      </div>
+
+      <Timeline data={experiences} />
+    </section>
+  );
 }
-
-export default Experiences;

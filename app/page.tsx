@@ -9,21 +9,24 @@ import Footer from './sections/Footer'
 
 function App() {
   return (
-    <div className='w-full container mx-auto max-w-7xl px-4'>
+    <div className='w-full overflow-x-hidden'>
       {/*Nav*/}
       <Navbar />
-      {/*Hero*/}
+      {/*Hero - Edge-to-edge full width background with contained content*/}
       <Hero />
-      {/*About*/}
-      <About />
-      {/*projects*/}
-      <Projects />
-      {/*Experiences*/}
-      <Experiences />
-      {/*Contact*/}
-      <Contact />
-      {/*Footer*/}
-      <Footer />
+      {/*Sections contained in max-w-7xl*/}
+      <div className='w-full container mx-auto max-w-7xl px-4'>
+        {/*About*/}
+        <About />
+        {/*projects*/}
+        <Projects />
+        {/*Experiences*/}
+        <Experiences />
+        {/*Contact*/}
+        <Contact />
+        {/*Footer*/}
+        <Footer />
+      </div>
     </div>
   )
 }

@@ -5,12 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sparkles } from "@react-three/drei";
 import { easing } from "maath";
 import type { Group, Mesh } from "three";
-
-interface HeroModelProps {
-  isAnimated?: boolean;
-  scale?: number;
-  position?: [number, number, number];
-}
+import type { HeroModelProps } from "@/constants/types";
 
 export default function HeroModel({
   isAnimated = true,

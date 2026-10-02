@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import Image from "next/image";
-import { ProjectDetailsProps } from "@/constants/types";
+import type { ProjectDetailsProps } from "@/constants/types";
 
 const ProjectDetails = ({
   title,
@@ -11,46 +11,99 @@ const ProjectDetails = ({
   closeModal,
 }: ProjectDetailsProps) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden backdrop-blur-sm">
+    <div
+      onClick={closeModal}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/75 backdrop-blur-md"
+    >
       <motion.div
-        className="relative max-w-2xl border shadow-sm rounded-2xl bg-linear-to-l from-midnight to-navy border-white/10"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-2xl glass-panel border border-white/15 rounded-3xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.9)] bg-gradient-to-b from-midnight via-midnight to-[#040718]"
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
       >
+        {/* Close Button */}
         <button
           onClick={closeModal}
           type="button"
-          className="absolute p-2 rounded-sm top-5 right-5 bg-midnight hover:bg-gray-500"
+          aria-label="Close modal"
+          className="absolute z-30 top-4 right-4 size-10 rounded-full bg-black/80 hover:bg-black border border-white/20 text-white flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
         >
-          <Image src="/assets/close.svg" width={24} height={24} alt="Close" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-5"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
         </button>
-        <Image
-          src={image}
-          alt={title}
-          width={768}
-          height={384}
-          className="w-full h-64 md:h-96 object-cover rounded-t-2xl"
-        />
-        <div className="p-5">
-          <h5 className="mb-2 text-2xl font-bold text-white">{title}</h5>
-          <p className="mb-3 font-normal text-neutral-400">{description}</p>
-          <div className="flex items-center justify-between mt-4">
-            <div className="flex gap-3">
-              {tags.map((tag) => (
+
+        {/* Hero Image */}
+        <div className="relative w-full h-64 sm:h-80 overflow-hidden bg-black/40">
+          <Image
+            src={image}
+            alt={title}
+            width={768}
+            height={420}
+            className="w-full h-full object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/20 to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="p-6 sm:p-8 flex flex-col gap-4">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+              {title}
+            </h3>
+            <p className="subtext leading-relaxed text-sm sm:text-base">
+              {description}
+            </p>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
+            {tags.map((tag) => (
+              <div
+                key={tag.id}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-neutral-300"
+              >
                 <Image
-                  key={tag.id}
                   src={tag.path}
                   alt={tag.name}
-                  width={40}
-                  height={40}
-                  className="rounded-lg size-10 hover-animation"
+                  width={16}
+                  height={16}
+                  className="size-4 object-contain"
                 />
-              ))}
-            </div>
-            <a className="inline-flex items-center gap-1 font-medium cursor-pointer hover-animation" href={href}>
-              View Project{" "}
-              <Image src="/assets/arrow-up.svg" width={16} height={16} alt="" />
-            </a>
+                <span>{tag.name}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center justify-end pt-4 mt-2">
+            {href ? (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-aqua text-midnight font-bold text-xs font-mono shadow-[0_0_20px_rgba(51,194,204,0.4)] hover:opacity-90 transition-opacity"
+              >
+                <span>View Repository / Live</span>
+                <Image src="/assets/arrow-up.svg" width={14} height={14} alt="Open" />
+              </a>
+            ) : (
+              <span className="text-xs font-mono text-neutral-500">
+                Private / Internal Project
+              </span>
+            )}
           </div>
         </div>
       </motion.div>

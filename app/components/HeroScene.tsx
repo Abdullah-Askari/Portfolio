@@ -3,15 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import type { Star } from "@/constants/types";
 
 gsap.registerPlugin(useGSAP);
-
-interface Star {
-  x: string;
-  y: string;
-  size: number;
-  opacity: number;
-}
 
 // Deterministic star generation: guaranteed to match 100% between SSR and client hydration
 const STARS: Star[] = Array.from({ length: 95 }, (_, i) => {
@@ -29,7 +23,6 @@ const STARS: Star[] = Array.from({ length: 95 }, (_, i) => {
 const HeroScene = () => {
   const root = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const sunRef = useRef<HTMLDivElement>(null);
   const shootingStarRef = useRef<HTMLDivElement>(null);
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -56,18 +49,7 @@ const HeroScene = () => {
         });
       }
 
-      // 2. Horizon sun gentle floating and breathing
-      if (sunRef.current) {
-        gsap.to(sunRef.current, {
-          y: -10,
-          duration: 4.5,
-          yoyo: true,
-          repeat: -1,
-          ease: "sine.inOut",
-        });
-      }
-
-      // 3. Ambient cosmic nebulae breathing
+      // 2. Ambient cosmic nebulae breathing
       gsap.to(".nebula-glow", {
         scale: 1.08,
         opacity: 0.5,
@@ -155,36 +137,15 @@ const HeroScene = () => {
         className="absolute h-[2px] w-[90px] rounded-full bg-gradient-to-r from-transparent via-[#22d3ee] to-white shadow-[0_0_12px_2px_#22d3ee] rotate-[-25deg] opacity-0 pointer-events-none"
       />
 
-      {/* Horizon Cyber Synthwave Sun */}
-      <div className="absolute inset-x-0 bottom-[38%] flex justify-center lg:justify-end lg:pr-[14%] items-center pointer-events-none">
-        {/* Outer radial sun halo */}
-        <div className="absolute size-56 sm:size-72 md:size-80 rounded-full bg-[radial-gradient(circle,rgba(244,63,94,0.3)_0%,rgba(34,211,238,0.12)_45%,transparent_70%)] blur-xl" />
-
-        {/* The Sun Body - Well Proportioned */}
-        <div
-          ref={sunRef}
-          className="sun relative size-40 sm:size-52 md:size-60 rounded-full bg-gradient-to-b from-[#ffd391] via-[#f43f5e] to-[#6366f1] shadow-[0_0_80px_12px_rgba(244,63,94,0.45),0_0_35px_4px_rgba(34,211,238,0.25)] will-change-transform overflow-hidden"
-        >
-          {/* Synthwave horizontal stripe slats */}
-          <div className="absolute inset-0 flex flex-col justify-end space-y-[3px] pb-2 opacity-40">
-            <div className="h-[2px] w-full bg-[#030412]" />
-            <div className="h-[3px] w-full bg-[#030412]" />
-            <div className="h-[4px] w-full bg-[#030412]" />
-            <div className="h-[5px] w-full bg-[#030412]" />
-            <div className="h-[6px] w-full bg-[#030412]" />
-          </div>
-        </div>
-      </div>
-
-      {/* Perspective 3D Cyber Grid Floor */}
-      <div className="absolute inset-x-0 bottom-0 h-[38%] overflow-hidden bg-gradient-to-b from-[#06091f] to-[#02030f] [perspective:380px]">
+      {/* Perspective 3D Cyber Grid Floor (Subtle Ground Horizon) */}
+      <div className="absolute inset-x-0 bottom-0 h-[18%] overflow-hidden bg-gradient-to-b from-[#06091f] to-[#02030f] [perspective:380px] pointer-events-none">
         {/* Grid plane */}
         <div
           ref={gridRef}
-          className="grid-floor absolute top-0 left-[-100%] h-[320%] w-[300%] origin-top opacity-40 [transform:rotateX(72deg)]"
+          className="grid-floor absolute top-0 left-[-100%] h-[320%] w-[300%] origin-top opacity-30 [transform:rotateX(72deg)]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(34, 211, 238, 0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.4) 1px, transparent 1px)",
+              "linear-gradient(rgba(34, 211, 238, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.3) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
             maskImage:
               "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 100%)",
@@ -193,11 +154,19 @@ const HeroScene = () => {
           }}
         />
         {/* Horizon fade gradient */}
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#06091f] via-[#06091f]/80 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#06091f] via-[#06091f]/80 to-transparent" />
       </div>
 
-      {/* Horizon Laser Beam */}
-      <div className="horizon-beam absolute inset-x-0 bottom-[38%] h-[2px] bg-gradient-to-r from-transparent via-[#22d3ee] via-[#f43f5e] to-transparent shadow-[0_0_20px_2px_rgba(34,211,238,0.8)] opacity-85" />
+      {/* Subtle Horizon Ground Line (Masked so it NEVER cuts across text on the left) */}
+      <div
+        className="horizon-beam absolute inset-x-0 bottom-[18%] h-px bg-gradient-to-r from-transparent via-[#22d3ee]/60 via-[#f43f5e]/60 to-transparent opacity-60 pointer-events-none"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent 0%, transparent 40%, white 65%, white 90%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, transparent 40%, white 65%, white 90%, transparent 100%)",
+        }}
+      />
     </div>
   );
 };

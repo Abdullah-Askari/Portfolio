@@ -25,6 +25,11 @@ export interface CardProps {
     containerRef: RefObject<HTMLElement | null>;
 }
 
+export interface NavItem {
+    name: string;
+    href: string;
+}
+
 export interface ProjectTag {
     id: number;
     name: string;
@@ -34,7 +39,6 @@ export interface ProjectTag {
 export interface ProjectDetailsProps {
     title: string;
     description: string;
-    subDescription?: string;
     image: string;
     tags: ProjectTag[];
     href: string;
@@ -44,11 +48,21 @@ export interface ProjectDetailsProps {
 export interface ProjectProps {
     title: string;
     description: string;
-    subDescription?: string;
     href: string;
     image: string;
     tags: ProjectTag[];
     setPreview: (image: string | null) => void;
+    index?: number;
+}
+
+export interface ProjectItem {
+    id: number;
+    title: string;
+    description: string;
+    href: string;
+    logo?: string;
+    image: string;
+    tags: ProjectTag[];
 }
 
 export interface IconProps {
@@ -78,6 +92,7 @@ export interface MarqueeProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface TimelineItem {
+    id?: number;
     date: string;
     title: string;
     job: string;
@@ -86,6 +101,20 @@ export interface TimelineItem {
 
 export interface TimelineProps {
     data: TimelineItem[];
+}
+
+export interface ExperienceItem {
+    id?: number;
+    date: string;
+    title: string;
+    job: string;
+    contents: string[];
+}
+
+export interface SocialItem {
+    name: string;
+    href: string;
+    icon: string;
 }
 
 export interface Particle {
@@ -131,4 +160,28 @@ export interface AstronautGLTF extends GLTF {
     materials: {
         'AstronautFallingTexture.png': Material;
     };
+}
+
+export interface CopyEmailButtonProps {
+    className?: string;
+    email?: string;
+}
+
+export interface MailButtonProps {
+    className?: string;
+    email?: string;
+    text?: string;
+}
+
+export interface HeroModelProps {
+    isAnimated?: boolean;
+    scale?: number;
+    position?: [number, number, number];
+}
+
+export interface Star {
+    x: string;
+    y: string;
+    size: number;
+    opacity: number;
 }
