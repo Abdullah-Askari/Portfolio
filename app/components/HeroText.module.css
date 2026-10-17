@@ -1,0 +1,10 @@
+.intro { text-align: left; max-width: 620px; }
+.greeting { font-size: clamp(18px, 2vw, 26px); color: #d6dce2; margin-bottom: 24px; }
+.title { font-size: clamp(64px, 7vw, 104px); line-height: 1.03; letter-spacing: -.06em; font-weight: 600; color: #f0f1ee; }
+.word { min-height: 1.2em; color: #a1dfce; }
+.description { max-width: 480px; margin-top: 24px; font-size: clamp(21px, 2.5vw, 31px); line-height: 1.45; letter-spacing: -.7px; color: #aeb8c3; }
+.actions { display: flex; flex-wrap: wrap; justify-content: flex-start; margin-top: 34px; gap: 24px; }
+.actions a { display: inline-flex; align-items: center; gap: 20px; border-bottom: 1px solid #7e9b90; padding: 9px 0; color: #e4f0ea; font-size: 13px; font-weight: 400; }
+.actions a:hover { color: #a1dfce; }
+.actions a:focus-visible { outline: 2px solid #99cfbd; outline-offset: 5px; }
+@media (max-width: 767px) { .title { font-size: clamp(60px, 15vw, 90px); } .description { font-size: 23px; max-width: 320px; } }

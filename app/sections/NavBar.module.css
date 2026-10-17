@@ -1,0 +1,18 @@
+.header { position: fixed; inset: 18px 0 auto; z-index: 50; padding: 0 24px; pointer-events: none; }
+.bar { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px 24px; background: #101720; border: 1px solid #34404c; border-radius: 14px; box-shadow: 0 10px 30px #0005, inset 0 1px 0 #ffffff05; pointer-events: auto; }
+.brand { display: flex; align-items: center; color: #edf4ff; }
+.name { font-size: 17px; font-weight: 500; letter-spacing: -.5px; }
+.link { padding: 9px 0; margin-left: 25px; border-bottom: 1px solid transparent; color: #a4adb8; font-size: 13px; transition: color .2s, border-color .2s; }
+.link:hover, .link[aria-current] { color: #edf5f1; border-bottom-color: #99cfbd; }
+.toggle { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; background: transparent; color: #e5edf9; cursor: pointer; flex-shrink: 0; }
+.bar a:focus-visible, .toggle:focus-visible, .mobileLink:focus-visible { outline: 2px solid #99cfbd; outline-offset: 5px; }
+.dialog { position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: max(28px, env(safe-area-inset-top)) 16px 24px; border: 0; background: #090e16; color: #edf4ff; overflow-y: auto; overscroll-behavior: contain; }
+.dialog::backdrop { background: #090e16; }
+.panel { max-width: 520px; margin: auto; padding: 12px 24px 24px; }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 34px; }
+.title { font-size: 15px; color: #aeb8c3; }
+.mobileLink { display: flex; align-items: center; gap: 18px; padding: 24px 0; border-top: 1px solid #ffffff18; font-size: 32px; font-weight: 400; letter-spacing: -.7px; }
+.mobileLink:hover, .mobileLink[aria-current] { color: #ace9d9; }
+.arrow { margin-left: auto; color: #94cbbc; font-size: 22px; }
+@media (min-width: 768px) { .bar .toggle { display: none; } }
+@media (max-width: 767px) { .header { top: 12px; padding-inline: 16px; } .bar { padding: 7px 14px; gap: 10px; border-radius: 12px; } .name { font-size: 16px; } }
