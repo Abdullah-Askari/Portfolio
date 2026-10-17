@@ -143,9 +143,9 @@ export const myExperiences: ExperienceItem[] = [
     title: "Z2A Tech",
     job: "Web Developer Intern",
     contents: [
-      "Built web applications using modern technologies.",
-      "Implemented dynamic features using JavaScript.",
-      "Understood and implemented state management.",
+      "Built and shipped responsive web applications using modern frameworks and tooling, focusing on clean component structure and maintainable code.",
+      "Engineered dynamic, interactive features in JavaScript, including async data fetching, form handling, and real-time UI updates.",
+      "Designed and implemented client-side state management, keeping data flow predictable across components and reducing unnecessary re-renders.",
     ],
   },
 ];
