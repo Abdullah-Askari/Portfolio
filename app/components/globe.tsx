@@ -73,6 +73,10 @@ export function Globe({ className, config = GLOBE_CONFIG }: GlobeProps) {
   useEffect(() => {
     const target = containerRef.current;
     if (!target) return;
+    if (!("IntersectionObserver" in window)) {
+      const timer = setTimeout(() => setIsInView(true), 0);
+      return () => clearTimeout(timer);
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -126,7 +130,14 @@ export function Globe({ className, config = GLOBE_CONFIG }: GlobeProps) {
     };
     canvas.addEventListener("webglcontextlost", handleContextLost);
 
-    const globe = createGlobe(canvas, globeConfig);
+    let globe: ReturnType<typeof createGlobe>;
+    try {
+      globe = createGlobe(canvas, globeConfig);
+    } catch (error) {
+      canvas.removeEventListener("webglcontextlost", handleContextLost);
+      window.removeEventListener("resize", onResize);
+      throw error;
+    }
 
     canvas.style.opacity = "1";
     return () => {

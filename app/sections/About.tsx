@@ -6,6 +6,7 @@ import Card from "../components/Card";
 import CopyEmailButton from "../components/CopyEmailButton";
 import { Frameworks } from "../components/FrameWorks";
 import { Globe } from "../components/globe";
+import GraphicsBoundary from "../components/GraphicsBoundary";
 
 export default function About() {
   const grid2Container = useRef<HTMLDivElement>(null);
@@ -130,7 +131,7 @@ export default function About() {
             )}
           </div>
           <figure className="absolute -right-12 -bottom-12 sm:-right-8 sm:-bottom-8 pointer-events-none opacity-80">
-            <Globe />
+            <GraphicsBoundary fallback={<div aria-hidden="true" className="mx-auto size-64 rounded-full border border-white/20 bg-[radial-gradient(circle_at_30%_30%,#568b80,#152d32_65%,#090e16)]" />}><Globe /></GraphicsBoundary>
           </figure>
         </div>
 
