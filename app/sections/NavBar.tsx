@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./NavBar.module.css";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -55,25 +54,25 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.bar}>
-          <Link href="#home" className={styles.brand}><span className={styles.name}>Abdullah Askari</span></Link>
+      <header className="portfolio-nav-bar-header">
+        <div className="portfolio-nav-bar-bar">
+          <Link href="#home" className="portfolio-nav-bar-brand"><span className="portfolio-nav-bar-name">Abdullah Askari</span></Link>
           <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
-            {navLinks.map((link) => <Link key={link.name} href={link.href} className={styles.link} aria-current={activeSection === link.href ? "location" : undefined}>{link.name}</Link>)}
+            {navLinks.map((link) => <Link key={link.name} href={link.href} className="portfolio-nav-bar-link" aria-current={activeSection === link.href ? "location" : undefined}>{link.name}</Link>)}
           </nav>
-          <button type="button" className={['md:hidden', styles.toggle].join(" ")} aria-label="Open menu" aria-expanded={isOpen} aria-controls="mobile-navigation" onClick={() => setIsOpen(true)}>
+          <button type="button" className={['md:hidden', "portfolio-nav-bar-toggle"].join(" ")} aria-label="Open menu" aria-expanded={isOpen} aria-controls="mobile-navigation" onClick={() => setIsOpen(true)}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M4 8h16M4 16h16" /></svg>
           </button>
         </div>
       </header>
-      <dialog ref={dialogRef} id="mobile-navigation" className={styles.dialog} aria-labelledby="navigation-title" onCancel={() => setIsOpen(false)} onClick={(event) => { if (event.target === event.currentTarget) setIsOpen(false); }}>
-        <div className={styles.panel}>
-          <div className={styles.heading}>
-            <span id="navigation-title" className={styles.title}>Menu</span>
-            <button type="button" className={styles.toggle} aria-label="Close menu" onClick={() => setIsOpen(false)} autoFocus><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+      <dialog ref={dialogRef} id="mobile-navigation" className="portfolio-nav-bar-dialog" aria-labelledby="navigation-title" onCancel={() => setIsOpen(false)} onClick={(event) => { if (event.target === event.currentTarget) setIsOpen(false); }}>
+        <div className="portfolio-nav-bar-panel">
+          <div className="portfolio-nav-bar-heading">
+            <span id="navigation-title" className="portfolio-nav-bar-title">Menu</span>
+            <button type="button" className="portfolio-nav-bar-toggle" aria-label="Close menu" onClick={() => setIsOpen(false)} autoFocus><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
           </div>
           <nav aria-label="Mobile navigation">
-            {navLinks.map((link) => <Link key={link.name} href={link.href} className={styles.mobileLink} aria-current={activeSection === link.href ? "location" : undefined} onClick={(event) => {
+            {navLinks.map((link) => <Link key={link.name} href={link.href} className="portfolio-nav-bar-mobile-link" aria-current={activeSection === link.href ? "location" : undefined} onClick={(event) => {
               event.preventDefault();
               setIsOpen(false);
               // Run after the effect restores the original page position.
@@ -83,7 +82,7 @@ export default function Navbar() {
                 if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
                 window.history.replaceState(null, "", link.href);
               });
-            }}><span>{link.name}</span><span className={styles.arrow} aria-hidden="true">↗</span></Link>)}
+            }}><span>{link.name}</span><span className="portfolio-nav-bar-arrow" aria-hidden="true">↗</span></Link>)}
           </nav>
         </div>
       </dialog>
