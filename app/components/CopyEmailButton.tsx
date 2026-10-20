@@ -7,7 +7,7 @@ import type { CopyEmailButtonProps } from "@/constants/types";
 
 const CopyEmailButton = ({
   className = "",
-  email = "syed.m.abdullahaskari@gmail.com",
+  email = "contact@abdullahaskari.dev",
 }: CopyEmailButtonProps) => {
   const [copied, setCopied] = useState(false);
 
