@@ -5,7 +5,7 @@ import type { MailButtonProps } from "@/constants/types";
 
 export default function MailButton({
   className = "",
-  email = "syed.m.abdullahaskari@gmail.com",
+  email = "contact@abdullahaskari.dev",
   text = "Send an Email",
 }: MailButtonProps) {
   return (
