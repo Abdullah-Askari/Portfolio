@@ -58,7 +58,7 @@ export default function Contact() {
             </div>
             <p className="text-neutral-400 text-sm mb-2">Drop me a line anytime!</p>
             <p className="text-xs font-mono text-neutral-300 select-all">
-              syed.m.abdullahaskari@gmail.com
+              contact@abdullahaskari.dev
             </p>
           </div>
           <MailButton text="Write Email" />
